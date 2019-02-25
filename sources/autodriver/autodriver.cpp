@@ -30,7 +30,7 @@ using namespace std;
 sub functions :
 */
 
-int refresh(	) /* refresh the screen every 20 miliseconds (as pixy is 50fps) */
+int refresh() /* refresh the screen every 20 miliseconds (as pixy is 50fps) */
 {
    int r;
    std::this_thread::sleep_for(std::chrono::milliseconds(20));
@@ -52,7 +52,6 @@ int main()
 
 /* Launch Hello Trolley */
 
-   system("clear");
    system("python ./sources/hello_trolley.py");
 
 
@@ -94,12 +93,50 @@ int main()
 
    cout << "\nThe position of the object followed is:"
         << "\n x: " << XValue
-	<< "\n y: " << YValue
-	<< "\n width: " << WidthValue
-	<< "\n height: " << HeightValue;
+        << "\n y: " << YValue
+        << "\n width: " << WidthValue
+        << "\n height: " << HeightValue;
 
    for (int i=0; i<4; i++)
        node[i].close();
+
+
+/* Behave in function of that the autotrolley have to take */
+
+   cout << "\n\nThe Autotrolley is :";
+
+// X axis
+ if (XValue<140)
+   {
+       cout << "\n- moving to the right";
+       system("python ./sources/autodriver/interface/xright.py");
+   }
+
+  if (XValue>160)
+  {
+      cout << "\n- moving to the left";
+      system("python ./sources/autodriver/interface/xleft.py");
+  }
+
+// Y axis
+   if (YValue<140)
+       cout << "\n- detecting that the object moved on the top but can't do anything about this";
+
+   if (YValue>160)
+       cout << "\n- detecting that the object is on the bottom but can't do anything";
+
+// Width & Height
+   if (WidthValue<50||HeightValue<50)
+   {
+       cout << "\n- moving closer to the object";
+       ("python ./sources/autodriver/interface/getcloser.py");
+   }
+
+   if (WidthValue>50||HeightValue>50)
+   {
+        cout << "\n- moving further from the object";
+        system("python ./sources/autodriver/interface/getfurther.py");
+   }
 
 return 0;
 

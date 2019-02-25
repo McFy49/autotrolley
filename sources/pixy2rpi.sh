@@ -10,5 +10,5 @@ sudo ./sources/hello_pixy | while read -r frame; do
    grep "t: " nodes/output.txt | cut -d ":" -f 6 | tr -d " " > nodes/height;
 
    # launch the autodriver
-   ./sources/autodriver
+   ./sources/autodriver/autodriver
 done
