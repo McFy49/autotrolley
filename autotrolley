@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Check if the file structure of the system is present - Create the nodes if they are not yet
+if [[ ! $(ls ./nodes/) ]]; then
+   mkdir ./nodes
+fi
+
+nodes_list="x y width height"
+for missing_node in $node_list; do
+   if [[ ! $(ls ./nodes/${missing_node}) ]]; then
+      touch ./nodes/${missing_node}
+   fi
+done
+
+# Run the interface between the pixy cmucam5 and the raspberry pi 3 b+
+. sources/pixy2rpi.sh
