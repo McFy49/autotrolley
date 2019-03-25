@@ -12,5 +12,5 @@ for missing_node in $node_list; do
    fi
 done
 
-# Run the interface between the pixy cmucam5 and the raspberry pi 3 b+
+# Run the interface between the pixy cmucam5 and the raspberry pi 3 B+
 . sources/pixy2rpi.sh

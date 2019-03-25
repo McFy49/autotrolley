@@ -3,7 +3,6 @@
 
 from termcolor import colored
 import RPi.GPIO as GPIO  # bibliothèque pour utiliser les GPIO
-import time              # bibliothèque pour gestion du temps
 import os
 
 # Initialize the GPIO
