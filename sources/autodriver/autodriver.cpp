@@ -81,7 +81,6 @@ int main()
           YValue=position[1];
           WidthValue=position[2];
           HeightValue=position[3];
-	  refresh(); 
        }
 
    }
@@ -95,9 +94,11 @@ int main()
         << "\n width: " << WidthValue
         << "\n height: " << HeightValue;
 
+
 /* Behave in function of that the autotrolley have to take */
 
    cout << "\n\nThe Autotrolley is :";
+   refresh();
 
 // X axis
  if (XValue<165 && XValue!=0)
