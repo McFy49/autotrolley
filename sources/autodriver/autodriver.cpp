@@ -32,9 +32,16 @@ sub functions :
 
 int refresh() /* refresh the screen every 20 miliseconds (as pixy is 50fps) */
 {
-   int r;
+   int r0;
    std::this_thread::sleep_for(std::chrono::milliseconds(20));
-   return r;
+   return r0;
+}
+
+int killgpio() /* kill every screen: screen where the python script are launched */
+{
+   int r1;
+   system("pkill screen");
+   return r1;
 }
 
 int main()
@@ -103,14 +110,16 @@ int main()
 // X axis
  if (XValue<165 && XValue!=0)
    {
+       killgpio();
        cout << "\n- moving to the right";
-       system("python ./sources/autodriver/interface/xright.py");
+       system("screen -d -m python ./sources/autodriver/interface/xright.py");
    }
 
    if (XValue>165)
    {
+      killgpio();
       cout << "\n- moving to the left";
-      system("python ./sources/autodriver/interface/xleft.py");
+      system("screen -d -m python ./sources/autodriver/interface/xleft.py");
    }
 
 // Y axis
@@ -123,14 +132,16 @@ int main()
 // Size of the object
    if (WidthValue<75 && HeightValue<75 && HeightValue!=0 && WidthValue!=0)
    {
+       killgpio();
        cout << "\n- moving further from the object";
-       system("python ./sources/autodriver/interface/getfurther.py");
+       system("screen -d -m python ./sources/autodriver/interface/getfurther.py");
    }
 
    if (WidthValue>75 && HeightValue>75)
    {
+       killgpio();
        cout << "\n- moving closer to the object";
-       system("python ./sources/autodriver/interface/getcloser.py");
+       system("screen -d -m python ./sources/autodriver/interface/getcloser.py");
    }
 
 
