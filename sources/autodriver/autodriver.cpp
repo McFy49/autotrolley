@@ -144,7 +144,14 @@ int main()
        system("screen -d -m python ./sources/autodriver/interface/getcloser.py");
    }
 
-
+// shutdown the motors if nothing is detected
+   if (XValue==0 && YValue==0 && WidthValue==0 && HeightValue==0)
+   {
+       killgpio();
+       cout << "\n- nothing detected, motors off";
+       system("screen -d -m python ./sources/autodriver/interface/get0.py");
+   }
+   
 /* Close the node reading */
 
    for (int i=0; i<4; i++)
