@@ -5,6 +5,9 @@ if [[ ! $(ls ./nodes/) ]]; then
    mkdir ./nodes
 fi
 
+# build up to date the autodriver code
+make autodriver
+
 nodes_list="x y width height"
 for missing_node in $node_list; do
    if [[ ! $(ls ./nodes/${missing_node}) ]]; then
