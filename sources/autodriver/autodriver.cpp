@@ -108,18 +108,33 @@ int main()
    refresh();
 
 // X axis
- if (XValue<165 && XValue!=0)
-   {
-       killgpio();
-       cout << "\n- moving to the right";
-       system("screen -d -m python ./sources/autodriver/interface/xright.py");
-   }
-
-   if (XValue>165)
+   if (XValue>275)
    {
       killgpio();
-      cout << "\n- moving to the left";
-      system("screen -d -m python ./sources/autodriver/interface/xleft.py");
+      cout << "\n- moving to the right";
+      system("screen -d -m python ./sources/autodriver/interface/xright.py");
+   }
+   
+   else if (XValue<110 && XValue!=0)
+   {
+       killgpio();
+       cout << "\n- moving to the left";
+       system("screen -d -m python ./sources/autodriver/interface/xleft.py");
+   }
+   
+// Size of the object  
+   else if (WidthValue>10 && HeightValue>5)
+   {
+       killgpio();
+       cout << "\n- moving closer to the object";
+       system("screen -d -m python ./sources/autodriver/interface/getcloser.py");
+   }
+   
+   else if (WidthValue<11 && HeightValue<6 && HeightValue!=0 && WidthValue!=0)
+   {
+       killgpio();
+       cout << "\n- moving further from the object";
+       system("screen -d -m python ./sources/autodriver/interface/getfurther.py");
    }
 
 // Y axis
@@ -128,21 +143,6 @@ int main()
 
    if (YValue>250 && YValue!=0)
        cout << "\n- The object is not detected anymore, that mean that the object moved to the bottom but the autotrolley can't do anything";
-
-// Size of the object
-   if (WidthValue<75 && HeightValue<75 && HeightValue!=0 && WidthValue!=0)
-   {
-       killgpio();
-       cout << "\n- moving further from the object";
-       system("screen -d -m python ./sources/autodriver/interface/getfurther.py");
-   }
-
-   if (WidthValue>75 && HeightValue>75)
-   {
-       killgpio();
-       cout << "\n- moving closer to the object";
-       system("screen -d -m python ./sources/autodriver/interface/getcloser.py");
-   }
 
 // shutdown the motors if nothing is detected
    if (XValue==0 && YValue==0 && WidthValue==0 && HeightValue==0)

@@ -21,4 +21,3 @@ while True:
     GPIO.output(E2,True)
     GPIO.output(M2,True)
 
-

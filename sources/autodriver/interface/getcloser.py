@@ -17,9 +17,9 @@ GPIO.setup(M2, GPIO.OUT)
 
 while True:
     GPIO.output(E1,True)
-    GPIO.output(M1,False)
+    GPIO.output(M1,True)
     GPIO.output(E2,True)
-    GPIO.output(M2,True)
+    GPIO.output(M2,False)
 
 
 

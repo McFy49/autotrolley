@@ -20,3 +20,5 @@ while True:
     GPIO.output(M1,False)
     GPIO.output(E2,False)
     GPIO.output(M2,False)
+
+GPIO.cleanup()
