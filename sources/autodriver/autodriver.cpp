@@ -108,7 +108,7 @@ int main()
    refresh();
 
 // X axis
-   if (XValue>275)
+   if (XValue>210)
    {
       killgpio();
       cout << "\n- moving to the right";
@@ -123,14 +123,14 @@ int main()
    }
    
 // Size of the object  
-   else if (WidthValue>10 && HeightValue>5)
+   else if (WidthValue>36 && HeightValue>36)
    {
        killgpio();
        cout << "\n- moving closer to the object";
        system("screen -d -m python ./sources/autodriver/interface/getcloser.py");
    }
    
-   else if (WidthValue<11 && HeightValue<6 && HeightValue!=0 && WidthValue!=0)
+   else if (WidthValue<25 && HeightValue<15 && HeightValue!=0 && WidthValue!=0)
    {
        killgpio();
        cout << "\n- moving further from the object";
